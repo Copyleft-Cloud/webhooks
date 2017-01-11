@@ -1,0 +1,28 @@
+{
+  "name": "webhooks",
+  "version": "1.0.0",
+  "description": "Copyleft Cloud Webhooks REST API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Copyleft-Cloud/webhooks.git"
+  },
+  "keywords": [
+    "webhooks",
+    "api",
+    "node.js",
+    "express.js"
+  ],
+  "author": "Brian Hooper <afellowhobbyist@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Copyleft-Cloud/webhooks/issues"
+  },
+  "homepage": "https://github.com/Copyleft-Cloud/webhooks#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
