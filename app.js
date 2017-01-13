@@ -11,6 +11,7 @@ var app = express();
 
 // IMPORT API MODULES
 var Deploy = require('./api_modules/deploy.js');
+var PagerDuty = require('./api_modules/pagerduty.js');
 
 // PASSPORT TOKEN AUTHENTICATION
 passport.use(new Strategy(
@@ -51,13 +52,24 @@ app.get('/deploy/app', function(req, res){
   deploy.app();
 });
 
-// curl -v -H "Authorization: Bearer 123456789" http://127.0.0.1:3000/
-// curl -v http://127.0.0.1:9999/?access_token=123456789
+// hubot example
+// curl -v -H "Authorization: Bearer 123456789" http://127.0.0.1:9999/status
 app.get('/status',
   passport.authenticate('bearer', { session: false }),
   function(req, res) {
   //res.json({ service: req.service.name, token: req.service.token });
-  res.json('Webhooks API is listening on port 9999');
+  res.json('Status: Webhooks API is listening on port 9999');
+});
+
+// hubot example
+// curl -v -H "Authorization: Bearer 123456789" http://127.0.0.1:9999/alert
+app.get('/alert',
+  passport.authenticate('bearer', { session: false }),
+  function(req, res) {
+    var pd = new PagerDuty();
+    pd.createEvent();
+  //res.json({ service: req.service.name, token: req.service.token });
+  res.json('PagerDuty Alert Created');
 });
 
 app.listen(9999, function () {
