@@ -10,19 +10,12 @@ var endpointSchema = mongoose.Schema({
     endpoint         : {
         name         : String,
         type         : String,
-        token        : String,
-        description  : String,
-        device           : {
-            device_name    : String,
-            private_ip   : String,
-            public_ip    : String
-        },
-        service           : {
-            service_name  : String,
-            service_token : String,
-            service_url      : String
+        dns          : String,
+        tokens       : {
+          basestation: String,
+          endpoint:    String
         }
-    },
+    }
 
 });
 
